@@ -17,6 +17,7 @@ namespace Asteroid_Belt_Assault
         private static int FrameCount;
         private float shotSpeed;
         private static int CollisionRadius;
+        
 
         public ShotManager(
             Texture2D texture,
@@ -32,6 +33,7 @@ namespace Asteroid_Belt_Assault
             CollisionRadius = collisionRadius;
             this.shotSpeed = shotSpeed;
             this.screenBounds = screenBounds;
+            
         }
 
         public void FireShot(

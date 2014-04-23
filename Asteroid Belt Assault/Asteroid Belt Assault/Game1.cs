@@ -248,6 +248,7 @@ namespace Asteroid_Belt_Assault
 
             }
 
+            MouseState ms = Mouse.GetState();
             base.Update(gameTime);
         }
 
