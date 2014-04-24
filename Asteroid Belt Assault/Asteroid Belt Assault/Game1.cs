@@ -23,6 +23,7 @@ namespace Asteroid_Belt_Assault
         GameStates gameState = GameStates.TitleScreen;
         Texture2D titleScreen;
         Texture2D spriteSheet;
+        Texture2D crosshairs;
 
         StarField starField;
         AsteroidManager asteroidManager;
@@ -75,6 +76,7 @@ namespace Asteroid_Belt_Assault
 
             titleScreen = Content.Load<Texture2D>(@"Textures\TitleScreen");
             spriteSheet = Content.Load<Texture2D>(@"Textures\spriteSheet");
+            crosshairs = Content.Load<Texture2D>(@"Textures\crosshairs64");
 
             starField = new StarField(
                 this.Window.ClientBounds.Width,
@@ -274,6 +276,7 @@ namespace Asteroid_Belt_Assault
                 (gameState == GameStates.PlayerDead) ||
                 (gameState == GameStates.GameOver))
             {
+
                 starField.Draw(spriteBatch);
                 asteroidManager.Draw(spriteBatch);
                 playerManager.Draw(spriteBatch);
@@ -295,6 +298,15 @@ namespace Asteroid_Belt_Assault
                         livesLocation,
                         Color.White);
                 }
+
+                spriteBatch.End();
+
+                spriteBatch.Begin(SpriteSortMode.BackToFront, BlendState.Additive);
+                
+                MouseState ms = Mouse.GetState();
+                spriteBatch.Draw(crosshairs, new Rectangle((int)ms.X - 32, (int)ms.Y - 32, 64, 64), new Rectangle(5 * 64, 6 * 64, 64, 64), Color.Red);
+
+
             }
 
             if ((gameState == GameStates.GameOver))

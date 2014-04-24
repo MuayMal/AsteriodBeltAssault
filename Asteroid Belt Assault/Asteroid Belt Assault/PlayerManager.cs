@@ -24,6 +24,8 @@ namespace Asteroid_Belt_Assault
         private int playerRadius = 15;
         public ShotManager PlayerShotManager;
 
+        public Vector2 direction = new Vector2(0, -1);
+
         public PlayerManager(
             Texture2D texture,  
             Rectangle initialFrame,
@@ -68,8 +70,8 @@ namespace Asteroid_Belt_Assault
             if (shotTimer >= minShotTimer)
             {
                 PlayerShotManager.FireShot(
-                    playerSprite.Location + gunOffset,
-                    new Vector2(0, -1),
+                    playerSprite.Center,
+                    direction,
                     true);
                 shotTimer = 0.0f;
             }
@@ -98,12 +100,18 @@ namespace Asteroid_Belt_Assault
                 playerSprite.Velocity += new Vector2(1, 0);
             }
 
-            if (keyState.IsKeyDown(Keys.Space))
+           // if (keyState.IsKeyDown(Keys.Space))
+            //{
+            //    FireShot();
+           // }
+        }
+        private void HandleMouseInput(MouseState ms)
+        {
+            if (ms.LeftButton == ButtonState.Pressed)
             {
                 FireShot();
             }
         }
-        
 
         private void HandleGamepadInput(GamePadState gamePadState)
         {
@@ -145,6 +153,14 @@ namespace Asteroid_Belt_Assault
         {
             PlayerShotManager.Update(gameTime);
 
+            MouseState ms = Mouse.GetState();
+            Vector2 msvec = new Vector2(ms.X, ms.Y);
+
+            direction = msvec - playerSprite.Center;
+            direction.Normalize();
+            playerSprite.Rotation = (float)Math.Atan2((double)direction.Y, (double)direction.X) + MathHelper.PiOver2;
+
+
             if (!Destroyed)
             {
                 playerSprite.Velocity = Vector2.Zero;
@@ -152,6 +168,8 @@ namespace Asteroid_Belt_Assault
                 shotTimer += (float)gameTime.ElapsedGameTime.TotalSeconds;
 
                 HandleKeyboardInput(Keyboard.GetState());
+
+                HandleMouseInput(Mouse.GetState());
                 
                 HandleGamepadInput(GamePad.GetState(PlayerIndex.One));
 
