@@ -82,11 +82,11 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Textures\new ship.png">
+    <Compile Include="Textures\Ship.png">
       <Name>Ship</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
-    </Content>
+    </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\XNA Game Studio\$(XnaFrameworkVersion)\Microsoft.Xna.GameStudio.ContentPipeline.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

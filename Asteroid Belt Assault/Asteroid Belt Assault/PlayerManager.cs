@@ -158,7 +158,7 @@ namespace Asteroid_Belt_Assault
 
             direction = msvec - playerSprite.Center;
             direction.Normalize();
-            playerSprite.Rotation = (float)Math.Atan2((double)direction.Y, (double)direction.X) + MathHelper.PiOver2;
+            playerSprite.Rotation = (float)Math.Atan2((double)direction.Y, (double)direction.X) - MathHelper.PiOver2;
 
 
             if (!Destroyed)

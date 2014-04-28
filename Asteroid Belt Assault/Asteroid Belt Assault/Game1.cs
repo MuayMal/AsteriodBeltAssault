@@ -24,6 +24,7 @@ namespace Asteroid_Belt_Assault
         Texture2D titleScreen;
         Texture2D spriteSheet;
         Texture2D crosshairs;
+        Texture2D Ship;
 
         StarField starField;
         AsteroidManager asteroidManager;
@@ -77,6 +78,7 @@ namespace Asteroid_Belt_Assault
             titleScreen = Content.Load<Texture2D>(@"Textures\TitleScreen");
             spriteSheet = Content.Load<Texture2D>(@"Textures\spriteSheet");
             crosshairs = Content.Load<Texture2D>(@"Textures\crosshairs64");
+            Ship = Content.Load<Texture2D>(@"Textures\Ship");
 
             starField = new StarField(
                 this.Window.ClientBounds.Width,
@@ -95,9 +97,9 @@ namespace Asteroid_Belt_Assault
                 this.Window.ClientBounds.Height);
 
             playerManager = new PlayerManager(
-                spriteSheet,    
-                new Rectangle(0, 150, 50, 50),    
-                3,
+                Ship,    
+                new Rectangle(0, 0, 50, 50),   
+                1,
                 new Rectangle(
                     0,
                     0,
