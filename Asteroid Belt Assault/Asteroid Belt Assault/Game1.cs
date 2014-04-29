@@ -306,7 +306,7 @@ namespace Asteroid_Belt_Assault
                 spriteBatch.Begin(SpriteSortMode.BackToFront, BlendState.Additive);
                 
                 MouseState ms = Mouse.GetState();
-                spriteBatch.Draw(crosshairs, new Rectangle((int)ms.X - 32, (int)ms.Y - 32, 64, 64), new Rectangle(5 * 64, 6 * 64, 64, 64), Color.Red);
+                spriteBatch.Draw(crosshairs, new Rectangle((int)ms.X - 32, (int)ms.Y - 32, 64, 64), new Rectangle(5 * 64, 6 * 64, 64, 64), Color.Cyan);//fav:(1,4)
 
 
             }
