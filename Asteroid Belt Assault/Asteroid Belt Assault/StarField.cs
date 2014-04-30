@@ -12,10 +12,8 @@ namespace Asteroid_Belt_Assault
         private List<Sprite> stars = new List<Sprite>();
         private int screenWidth = 800;
         private int screenHeight = 600;
-        private Random rand = new Random();
-        private Color[] colors = { Color.White, Color.Yellow, 
-                           Color.Wheat, Color.WhiteSmoke, 
-                           Color.SlateGray };
+        private Random rand = new Random(System.Environment.TickCount);
+
 
         public StarField(
             int screenWidth,
@@ -23,8 +21,12 @@ namespace Asteroid_Belt_Assault
             int starCount,
             Vector2 starVelocity,
             Texture2D texture,
-            Rectangle frameRectangle)
+            Rectangle frameRectangle,
+            Color tintColor)
         {
+            System.Threading.Thread.Sleep(30);
+            rand = new Random(System.Environment.TickCount);
+
             this.screenWidth = screenWidth;
             this.screenHeight = screenHeight;
             for (int x = 0; x < starCount; x++)
@@ -35,9 +37,10 @@ namespace Asteroid_Belt_Assault
                     texture,
                     frameRectangle,
                     starVelocity));
-                Color starColor = colors[rand.Next(0, colors.Count())];
-                starColor *= (float)(rand.Next(30, 80) / 100f); stars[stars.Count() - 1].TintColor = starColor;
+                stars[stars.Count() - 1].TintColor = tintColor;
             }
+
+
         }
 
         public void Update(GameTime gameTime)

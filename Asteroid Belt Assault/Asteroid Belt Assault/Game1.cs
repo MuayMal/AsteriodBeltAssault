@@ -26,7 +26,7 @@ namespace Asteroid_Belt_Assault
         Texture2D crosshairs;
         Texture2D Ship;
 
-        StarField starField;
+        List<StarField> starField;
         AsteroidManager asteroidManager;
         PlayerManager playerManager;
         EnemyManager enemyManager;
@@ -80,13 +80,22 @@ namespace Asteroid_Belt_Assault
             crosshairs = Content.Load<Texture2D>(@"Textures\crosshairs64");
             Ship = Content.Load<Texture2D>(@"Textures\Ship");
 
-            starField = new StarField(
-                this.Window.ClientBounds.Width,
-                this.Window.ClientBounds.Height,
-                200,
-                new Vector2(0, 30f),
-                spriteSheet,
-                new Rectangle(0, 450, 2, 2));
+            starField = new List<StarField>();
+
+            Random rand = new Random();
+            for (int i = 0; i < 5; i++)
+            {
+                int bright = rand.Next(32, 32 + i * 40);
+
+                starField.Add(  new StarField(
+                    this.Window.ClientBounds.Width,
+                    this.Window.ClientBounds.Height,
+                    (5-i)*50,
+                    new Vector2(0, 10 + i * 25),
+                    spriteSheet,
+                    new Rectangle(0, 450, 2, 2),
+                    new Color(bright + rand.Next(0, 10), bright, bright + rand.Next(0, 50))));
+            }
 
             asteroidManager = new AsteroidManager(
                 10,
@@ -195,7 +204,10 @@ namespace Asteroid_Belt_Assault
 
                 case GameStates.Playing:
 
-                    starField.Update(gameTime);
+                    for (int i = 0; i < starField.Count; i++)
+                    {
+                        starField[i].Update(gameTime);
+                    }
                     asteroidManager.Update(gameTime);
                     playerManager.Update(gameTime);
                     enemyManager.Update(gameTime);
@@ -223,7 +235,10 @@ namespace Asteroid_Belt_Assault
                     playerDeathTimer +=
                         (float)gameTime.ElapsedGameTime.TotalSeconds;
 
-                    starField.Update(gameTime);
+                    for (int i = 0; i < starField.Count; i++)
+                    {
+                        starField[i].Update(gameTime);
+                    }
                     asteroidManager.Update(gameTime);
                     enemyManager.Update(gameTime);
                     playerManager.PlayerShotManager.Update(gameTime);
@@ -239,7 +254,10 @@ namespace Asteroid_Belt_Assault
                 case GameStates.GameOver:
                     playerDeathTimer +=
                         (float)gameTime.ElapsedGameTime.TotalSeconds;
-                    starField.Update(gameTime);
+                    for (int i = 0; i < starField.Count; i++)
+                    {
+                        starField[i].Update(gameTime);
+                    }
                     asteroidManager.Update(gameTime);
                     enemyManager.Update(gameTime);
                     playerManager.PlayerShotManager.Update(gameTime);
@@ -279,7 +297,10 @@ namespace Asteroid_Belt_Assault
                 (gameState == GameStates.GameOver))
             {
 
-                starField.Draw(spriteBatch);
+                for (int i = 0; i < starField.Count; i++)
+                {
+                    starField[i].Draw(spriteBatch);
+                }
                 asteroidManager.Draw(spriteBatch);
                 playerManager.Draw(spriteBatch);
                 enemyManager.Draw(spriteBatch);
@@ -306,7 +327,7 @@ namespace Asteroid_Belt_Assault
                 spriteBatch.Begin(SpriteSortMode.BackToFront, BlendState.Additive);
                 
                 MouseState ms = Mouse.GetState();
-                spriteBatch.Draw(crosshairs, new Rectangle((int)ms.X - 32, (int)ms.Y - 32, 64, 64), new Rectangle(5 * 64, 6 * 64, 64, 64), Color.Cyan);//fav:(1,4)
+                spriteBatch.Draw(crosshairs, new Rectangle((int)ms.X - 32, (int)ms.Y - 32, 64, 64), new Rectangle(5* 64, 6 * 64, 64, 64), Color.Cyan);//fav:(1,4)(5,6)
 
 
             }
