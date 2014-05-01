@@ -21,7 +21,7 @@ namespace Asteroid_Belt_Assault
         private int minSpeed = 60;
         private int maxSpeed = 120;
 
-        private Random rand = new Random();
+        private Random rand = new Random(System.Environment.TickCount);
 
         public void AddAsteroid()
         {
@@ -38,6 +38,7 @@ namespace Asteroid_Belt_Assault
                     initialFrame.Width,
                     initialFrame.Height));
             }
+            newAsteroid.Frame = rand.Next(0, asteroidFrames);
             newAsteroid.Rotation =
                 MathHelper.ToRadians((float)rand.Next(0, 360));
             newAsteroid.CollisionRadius = 15;

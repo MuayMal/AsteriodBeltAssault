@@ -8,6 +8,7 @@ using Microsoft.Xna.Framework.GamerServices;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
+using BloomPostprocess;
 
 namespace Asteroid_Belt_Assault
 {
@@ -32,6 +33,8 @@ namespace Asteroid_Belt_Assault
         EnemyManager enemyManager;
         ExplosionManager explosionManager;
 
+        BloomComponent bloom;
+
         CollisionManager collisionManager;
 
         SpriteFont pericles14;
@@ -50,6 +53,7 @@ namespace Asteroid_Belt_Assault
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
+            
             Content.RootDirectory = "Content";
         }
 
@@ -80,6 +84,11 @@ namespace Asteroid_Belt_Assault
             crosshairs = Content.Load<Texture2D>(@"Textures\crosshairs64");
             Ship = Content.Load<Texture2D>(@"Textures\Ship");
 
+            bloom = new BloomComponent(this);
+            bloom.Initialize();
+         
+            bloom.Settings = new BloomSettings(null, 0.25f, 4, 2, 1, 1.5f, 1);
+
             starField = new List<StarField>();
 
             Random rand = new Random();
@@ -93,7 +102,7 @@ namespace Asteroid_Belt_Assault
                     (5-i)*50,
                     new Vector2(0, 10 + i * 25),
                     spriteSheet,
-                    new Rectangle(0, 450, 2, 2),
+                    new Rectangle(5, 257, 8, 7), // new Rectangle(0, 450, 2, 2)
                     new Color(bright + rand.Next(0, 10), bright, bright + rand.Next(0, 50))));
             }
 
@@ -107,7 +116,7 @@ namespace Asteroid_Belt_Assault
 
             playerManager = new PlayerManager(
                 Ship,    
-                new Rectangle(0, 0, 50, 50),   
+                new Rectangle(0, 0, 64, 64),   
                 1,
                 new Rectangle(
                     0,
@@ -181,6 +190,7 @@ namespace Asteroid_Belt_Assault
                 this.Exit();
 
             // TODO: Add your update logic here
+            bloom.Update(gameTime);
 
             switch (gameState)
             {
@@ -280,31 +290,53 @@ namespace Asteroid_Belt_Assault
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Draw(GameTime gameTime)
         {
-            GraphicsDevice.Clear(Color.Black);
+            
 
-            spriteBatch.Begin();
+           
+
+           
 
             if (gameState == GameStates.TitleScreen)
             {
+                GraphicsDevice.Clear(Color.Black);
+
+                spriteBatch.Begin();
                 spriteBatch.Draw(titleScreen,
                     new Rectangle(0, 0, this.Window.ClientBounds.Width,
                         this.Window.ClientBounds.Height),
                         Color.White);
+                spriteBatch.End();
             }
 
             if ((gameState == GameStates.Playing) ||
                 (gameState == GameStates.PlayerDead) ||
                 (gameState == GameStates.GameOver))
             {
+                spriteBatch.Begin();
+
+                bloom.BeginDraw();
+
+                GraphicsDevice.Clear(Color.Black);
 
                 for (int i = 0; i < starField.Count; i++)
                 {
                     starField[i].Draw(spriteBatch);
                 }
                 asteroidManager.Draw(spriteBatch);
+
+                base.Draw(gameTime);
+                spriteBatch.End();
+
+                bloom.Draw(gameTime);
+
+                spriteBatch.Begin();
+
                 playerManager.Draw(spriteBatch);
                 enemyManager.Draw(spriteBatch);
                 explosionManager.Draw(spriteBatch);
+                
+                
+                
 
                 spriteBatch.DrawString(
                     pericles14,
@@ -329,11 +361,13 @@ namespace Asteroid_Belt_Assault
                 MouseState ms = Mouse.GetState();
                 spriteBatch.Draw(crosshairs, new Rectangle((int)ms.X - 32, (int)ms.Y - 32, 64, 64), new Rectangle(5* 64, 6 * 64, 64, 64), Color.Cyan);//fav:(1,4)(5,6)
 
-
+                spriteBatch.End();
             }
 
             if ((gameState == GameStates.GameOver))
             {
+                spriteBatch.Begin();
+
                 spriteBatch.DrawString(
                     pericles14,
                     "G A M E  O V E R !",
@@ -342,10 +376,13 @@ namespace Asteroid_Belt_Assault
                           pericles14.MeasureString("G A M E  O V E R !").X / 2,
                         50),
                     Color.White);
+
+                spriteBatch.End();
+
             }
 
 
-            spriteBatch.End();
+            
 
             base.Draw(gameTime);
         }
