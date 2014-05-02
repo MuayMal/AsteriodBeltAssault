@@ -20,7 +20,7 @@ namespace Asteroid_Belt_Assault
 
         private Vector2 gunOffset = new Vector2(25, 10);
         private float shotTimer = 0.0f;
-        private float minShotTimer = 0.2f;
+        private float minShotTimer = -100.0f;
         private int playerRadius = 15;
         public ShotManager PlayerShotManager;
 
@@ -40,7 +40,7 @@ namespace Asteroid_Belt_Assault
 
             PlayerShotManager = new ShotManager(
                 texture,
-                new Rectangle(0, 311, 21, 32), // 0, 300, 5, 5
+                new Rectangle(0, 310, 20, 5), // 0, 300, 5, 5
                 10,
                 2,
                 250f,
@@ -183,7 +183,7 @@ namespace Asteroid_Belt_Assault
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            PlayerShotManager.Draw(spriteBatch);
+            
 
             if (!Destroyed)
             {

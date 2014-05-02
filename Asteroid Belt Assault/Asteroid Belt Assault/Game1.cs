@@ -324,6 +324,10 @@ namespace Asteroid_Belt_Assault
                 }
                 asteroidManager.Draw(spriteBatch);
 
+                playerManager.PlayerShotManager.Draw(spriteBatch);
+                explosionManager.Draw(spriteBatch);
+                playerManager.Draw(spriteBatch);
+
                 base.Draw(gameTime);
                 spriteBatch.End();
 
@@ -331,9 +335,9 @@ namespace Asteroid_Belt_Assault
 
                 spriteBatch.Begin();
 
-                playerManager.Draw(spriteBatch);
+                
                 enemyManager.Draw(spriteBatch);
-                explosionManager.Draw(spriteBatch);
+                
                 
                 
                 
@@ -360,6 +364,8 @@ namespace Asteroid_Belt_Assault
                 
                 MouseState ms = Mouse.GetState();
                 spriteBatch.Draw(crosshairs, new Rectangle((int)ms.X - 32, (int)ms.Y - 32, 64, 64), new Rectangle(5* 64, 6 * 64, 64, 64), Color.Cyan);//fav:(1,4)(5,6)
+
+                
 
                 spriteBatch.End();
             }

@@ -13,7 +13,7 @@ namespace Asteroid_Belt_Assault
         private Rectangle screenBounds;
 
         private static Texture2D Texture;
-        private static Rectangle InitialFrame;
+        private Rectangle InitialFrame;
         private static int FrameCount;
         private float shotSpeed;
         private static int CollisionRadius;
@@ -49,6 +49,11 @@ namespace Asteroid_Belt_Assault
 
             thisShot.Velocity *= shotSpeed;
 
+            Vector2 vec = thisShot.Velocity;
+            vec.Normalize();
+
+            thisShot.Rotation = (float)Math.Atan2(vec.Y, vec.X);
+
             for (int x = 1; x < FrameCount; x++)
             {
                 thisShot.AddFrame(new Rectangle(
@@ -76,6 +81,7 @@ namespace Asteroid_Belt_Assault
         {
             for (int x = Shots.Count - 1; x >= 0; x--)
             {
+                
                 Shots[x].Update(gameTime);
                 if (!screenBounds.Intersects(Shots[x].Destination))
                 {
