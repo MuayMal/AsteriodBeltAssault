@@ -18,17 +18,17 @@ namespace Asteroid_Belt_Assault
 
         private static SoundEffect playerShot;
         private static SoundEffect enemyShot;
-        private static SoundEffect BGmusic;
+        
 
         private static Random rand = new Random();
-
+        
         public static void Initialize(ContentManager content)
         {
             try
             {
                 playerShot = content.Load<SoundEffect>(@"Sounds\Shot1");
                 enemyShot = content.Load<SoundEffect>(@"Sounds\Shot2");
-                BGmusic = content.Load<SoundEffect>(@"Sounds\BGmusic");
+                
 
                 for (int x = 1; x <= explosionCount; x++)
                 {

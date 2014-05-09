@@ -84,6 +84,9 @@ namespace Asteroid_Belt_Assault
             crosshairs = Content.Load<Texture2D>(@"Textures\crosshairs64");
             Ship = Content.Load<Texture2D>(@"Textures\Ship");
 
+            Song song = Content.Load<Song>(@"Sounds\song");  // Put the name of your song in instead of "song_title"
+            MediaPlayer.Play(song);
+
             bloom = new BloomComponent(this);
             bloom.Initialize();
          
@@ -100,7 +103,7 @@ namespace Asteroid_Belt_Assault
                     this.Window.ClientBounds.Width,
                     this.Window.ClientBounds.Height,
                     (5-i)*50,
-                    new Vector2(0, 10 + i * 25),
+                    new Vector2(0, 10 + i * 100),
                     spriteSheet,
                     new Rectangle(5, 257, 8, 7), // new Rectangle(0, 450, 2, 2)
                     new Color(bright + rand.Next(0, 10), bright, bright + rand.Next(0, 50))));
