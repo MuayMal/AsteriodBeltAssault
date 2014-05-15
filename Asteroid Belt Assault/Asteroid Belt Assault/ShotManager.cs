@@ -17,7 +17,8 @@ namespace Asteroid_Belt_Assault
         private static int FrameCount;
         private float shotSpeed;
         private static int CollisionRadius;
-        
+
+        private bool playerFired = false;
 
         public ShotManager(
             Texture2D texture,
@@ -48,6 +49,7 @@ namespace Asteroid_Belt_Assault
                 velocity);
 
             thisShot.Velocity *= shotSpeed;
+            this.playerFired = playerFired;
 
             Vector2 vec = thisShot.Velocity;
             vec.Normalize();
@@ -83,6 +85,12 @@ namespace Asteroid_Belt_Assault
             {
                 
                 Shots[x].Update(gameTime);
+
+                if (playerFired)
+                    EffectManager.Effect("Enemy Cannon Fire").Trigger(Shots[x].Center + (-Shots[x].Velocity * 0.05f));
+                else
+                    EffectManager.Effect("Ship Cannon Fire").Trigger(Shots[x].Center);
+
                 if (!screenBounds.Intersects(Shots[x].Destination))
                 {
                     Shots.RemoveAt(x);
@@ -94,7 +102,8 @@ namespace Asteroid_Belt_Assault
         {
             foreach (Sprite shot in Shots)
             {
-                shot.Draw(spriteBatch);
+                if (playerFired) 
+                    shot.Draw(spriteBatch);
             }
         }
 

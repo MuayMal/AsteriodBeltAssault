@@ -1,0 +1,240 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<XnaContent>
+  <Asset Type="ProjectMercury.ParticleEffect">
+    <Item Type="ProjectMercury.Emitters.ConeEmitter">
+      <Name>Smoke 1</Name>
+      <Budget>500</Budget>
+      <Term>3</Term>
+      <ReleaseQuantity>1</ReleaseQuantity>
+      <Enabled>True</Enabled>
+      <ReleaseSpeed>
+        <Value>500</Value>
+        <Variation>100</Variation>
+      </ReleaseSpeed>
+      <ReleaseColour>
+        <Value>0.5019608 0.5019608 0.5019608</Value>
+        <Variation>0 0 0</Variation>
+      </ReleaseColour>
+      <ReleaseOpacity>
+        <Value>1</Value>
+        <Variation>0</Variation>
+      </ReleaseOpacity>
+      <ReleaseScale>
+        <Value>16</Value>
+        <Variation>0</Variation>
+      </ReleaseScale>
+      <ReleaseRotation>
+        <Value>0</Value>
+        <Variation>3.14</Variation>
+      </ReleaseRotation>
+      <ReleaseImpulse>0 0</ReleaseImpulse>
+      <ParticleTextureAssetName>Textures\Cloud001</ParticleTextureAssetName>
+      <Modifiers>
+        <Item Type="ProjectMercury.Modifiers.DampingModifier">
+          <DampingCoefficient>0.95</DampingCoefficient>
+        </Item>
+        <Item Type="ProjectMercury.Modifiers.ScaleModifier">
+          <InitialScale>64</InitialScale>
+          <UltimateScale>256</UltimateScale>
+        </Item>
+        <Item Type="ProjectMercury.Modifiers.RotationRateModifier">
+          <InitialRate>1.57079637</InitialRate>
+          <FinalRate>0</FinalRate>
+        </Item>
+        <Item Type="ProjectMercury.Modifiers.LinearGravityModifier">
+          <Gravity>150 0</Gravity>
+        </Item>
+        <Item Type="ProjectMercury.Modifiers.OpacityInterpolatorModifier">
+          <InitialOpacity>0</InitialOpacity>
+          <MiddleOpacity>0.5</MiddleOpacity>
+          <MiddlePosition>0.1</MiddlePosition>
+          <FinalOpacity>0</FinalOpacity>
+        </Item>
+      </Modifiers>
+      <BlendMode>Alpha</BlendMode>
+      <TriggerOffset>0 0</TriggerOffset>
+      <MinimumTriggerPeriod>0.05</MinimumTriggerPeriod>
+      <Direction>1.55</Direction>
+      <ConeAngle>0.3</ConeAngle>
+    </Item>
+    <Item Type="ProjectMercury.Emitters.ConeEmitter">
+      <Name>Smoke 2</Name>
+      <Budget>500</Budget>
+      <Term>3</Term>
+      <ReleaseQuantity>1</ReleaseQuantity>
+      <Enabled>True</Enabled>
+      <ReleaseSpeed>
+        <Value>500</Value>
+        <Variation>100</Variation>
+      </ReleaseSpeed>
+      <ReleaseColour>
+        <Value>0.5019608 0.5019608 0.5019608</Value>
+        <Variation>0 0 0</Variation>
+      </ReleaseColour>
+      <ReleaseOpacity>
+        <Value>1</Value>
+        <Variation>0</Variation>
+      </ReleaseOpacity>
+      <ReleaseScale>
+        <Value>16</Value>
+        <Variation>0</Variation>
+      </ReleaseScale>
+      <ReleaseRotation>
+        <Value>0</Value>
+        <Variation>3.14</Variation>
+      </ReleaseRotation>
+      <ReleaseImpulse>0 0</ReleaseImpulse>
+      <ParticleTextureAssetName>Textures\Cloud001</ParticleTextureAssetName>
+      <Modifiers>
+        <Item Type="ProjectMercury.Modifiers.DampingModifier">
+          <DampingCoefficient>0.95</DampingCoefficient>
+        </Item>
+        <Item Type="ProjectMercury.Modifiers.ScaleModifier">
+          <InitialScale>64</InitialScale>
+          <UltimateScale>256</UltimateScale>
+        </Item>
+        <Item Type="ProjectMercury.Modifiers.RotationRateModifier">
+          <InitialRate>1.57079637</InitialRate>
+          <FinalRate>0</FinalRate>
+        </Item>
+        <Item Type="ProjectMercury.Modifiers.LinearGravityModifier">
+          <Gravity>150 0</Gravity>
+        </Item>
+        <Item Type="ProjectMercury.Modifiers.OpacityInterpolatorModifier">
+          <InitialOpacity>0</InitialOpacity>
+          <MiddleOpacity>0.5</MiddleOpacity>
+          <MiddlePosition>0.1</MiddlePosition>
+          <FinalOpacity>0</FinalOpacity>
+        </Item>
+      </Modifiers>
+      <BlendMode>Alpha</BlendMode>
+      <TriggerOffset>0 0</TriggerOffset>
+      <MinimumTriggerPeriod>0.05</MinimumTriggerPeriod>
+      <Direction>1.6</Direction>
+      <ConeAngle>0.2</ConeAngle>
+    </Item>
+    <Item Type="ProjectMercury.Emitters.ConeEmitter">
+      <Name>Fire Thrust</Name>
+      <Budget>500</Budget>
+      <Term>3</Term>
+      <ReleaseQuantity>1</ReleaseQuantity>
+      <Enabled>True</Enabled>
+      <ReleaseSpeed>
+        <Value>500</Value>
+        <Variation>100</Variation>
+      </ReleaseSpeed>
+      <ReleaseColour>
+        <Value>1 0.6 0</Value>
+        <Variation>0.1 0.1 0</Variation>
+      </ReleaseColour>
+      <ReleaseOpacity>
+        <Value>1</Value>
+        <Variation>0</Variation>
+      </ReleaseOpacity>
+      <ReleaseScale>
+        <Value>16</Value>
+        <Variation>0</Variation>
+      </ReleaseScale>
+      <ReleaseRotation>
+        <Value>0</Value>
+        <Variation>3.14</Variation>
+      </ReleaseRotation>
+      <ReleaseImpulse>0 0</ReleaseImpulse>
+      <ParticleTextureAssetName>Textures\Cloud004</ParticleTextureAssetName>
+      <Modifiers>
+        <Item Type="ProjectMercury.Modifiers.DampingModifier">
+          <DampingCoefficient>0.95</DampingCoefficient>
+        </Item>
+        <Item Type="ProjectMercury.Modifiers.ScaleModifier">
+          <InitialScale>64</InitialScale>
+          <UltimateScale>128</UltimateScale>
+        </Item>
+        <Item Type="ProjectMercury.Modifiers.RotationRateModifier">
+          <InitialRate>1.57079637</InitialRate>
+          <FinalRate>0</FinalRate>
+        </Item>
+        <Item Type="ProjectMercury.Modifiers.LinearGravityModifier">
+          <Gravity>150 0</Gravity>
+        </Item>
+        <Item Type="ProjectMercury.Modifiers.OpacityInterpolatorModifier">
+          <InitialOpacity>0.5</InitialOpacity>
+          <MiddleOpacity>0.2</MiddleOpacity>
+          <MiddlePosition>0.05</MiddlePosition>
+          <FinalOpacity>0</FinalOpacity>
+        </Item>
+        <Item Type="ProjectMercury.Modifiers.ColourModifier">
+          <InitialColour>1 0.3882353 0</InitialColour>
+          <UltimateColour>0.8862745 0.9882353 0</UltimateColour>
+        </Item>
+      </Modifiers>
+      <BlendMode>Add</BlendMode>
+      <TriggerOffset>0 0</TriggerOffset>
+      <MinimumTriggerPeriod>0.02</MinimumTriggerPeriod>
+      <Direction>1.55</Direction>
+      <ConeAngle>0.2</ConeAngle>
+    </Item>
+    <Item Type="ProjectMercury.Emitters.ConeEmitter">
+      <Name>Copy of Fire Thrust</Name>
+      <Budget>500</Budget>
+      <Term>3</Term>
+      <ReleaseQuantity>1</ReleaseQuantity>
+      <Enabled>True</Enabled>
+      <ReleaseSpeed>
+        <Value>500</Value>
+        <Variation>100</Variation>
+      </ReleaseSpeed>
+      <ReleaseColour>
+        <Value>1 0.6 0</Value>
+        <Variation>0.1 0.1 0</Variation>
+      </ReleaseColour>
+      <ReleaseOpacity>
+        <Value>1</Value>
+        <Variation>0</Variation>
+      </ReleaseOpacity>
+      <ReleaseScale>
+        <Value>16</Value>
+        <Variation>0</Variation>
+      </ReleaseScale>
+      <ReleaseRotation>
+        <Value>0</Value>
+        <Variation>3.14</Variation>
+      </ReleaseRotation>
+      <ReleaseImpulse>0 0</ReleaseImpulse>
+      <ParticleTextureAssetName>Textures\LensFlare</ParticleTextureAssetName>
+      <Modifiers>
+        <Item Type="ProjectMercury.Modifiers.DampingModifier">
+          <DampingCoefficient>0.95</DampingCoefficient>
+        </Item>
+        <Item Type="ProjectMercury.Modifiers.ScaleModifier">
+          <InitialScale>64</InitialScale>
+          <UltimateScale>128</UltimateScale>
+        </Item>
+        <Item Type="ProjectMercury.Modifiers.RotationRateModifier">
+          <InitialRate>1.57079637</InitialRate>
+          <FinalRate>0</FinalRate>
+        </Item>
+        <Item Type="ProjectMercury.Modifiers.LinearGravityModifier">
+          <Gravity>150 0</Gravity>
+        </Item>
+        <Item Type="ProjectMercury.Modifiers.OpacityInterpolatorModifier">
+          <InitialOpacity>0.7</InitialOpacity>
+          <MiddleOpacity>0.2</MiddleOpacity>
+          <MiddlePosition>0.05</MiddlePosition>
+          <FinalOpacity>0</FinalOpacity>
+        </Item>
+        <Item Type="ProjectMercury.Modifiers.ColourModifier">
+          <InitialColour>1 0.3882353 0</InitialColour>
+          <UltimateColour>0.9862745 0.9882353 0</UltimateColour>
+        </Item>
+      </Modifiers>
+      <BlendMode>Add</BlendMode>
+      <TriggerOffset>0 0</TriggerOffset>
+      <MinimumTriggerPeriod>0.02</MinimumTriggerPeriod>
+      <Direction>1.55</Direction>
+      <ConeAngle>0.1</ConeAngle>
+    </Item>
+    <Name>BasicSmokePlume</Name>
+    <Author>Matt Davey</Author>
+    <Description>A basic plume of smoke.</Description>
+  </Asset>
+</XnaContent>

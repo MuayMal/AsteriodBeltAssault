@@ -1,0 +1,103 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<XnaContent>
+  <Asset Type="ProjectMercury.ParticleEffect">
+    <Item>
+      <Name>Basic Emitter</Name>
+      <Budget>5000</Budget>
+      <Term>1</Term>
+      <ReleaseQuantity>5</ReleaseQuantity>
+      <Enabled>True</Enabled>
+      <ReleaseSpeed>
+        <Value>60</Value>
+        <Variation>25</Variation>
+      </ReleaseSpeed>
+      <ReleaseColour>
+        <Value>0 1 1</Value>
+        <Variation>0 0 0</Variation>
+      </ReleaseColour>
+      <ReleaseOpacity>
+        <Value>1</Value>
+        <Variation>0</Variation>
+      </ReleaseOpacity>
+      <ReleaseScale>
+        <Value>32</Value>
+        <Variation>16</Variation>
+      </ReleaseScale>
+      <ReleaseRotation>
+        <Value>0</Value>
+        <Variation>0</Variation>
+      </ReleaseRotation>
+      <ReleaseImpulse>0 0</ReleaseImpulse>
+      <ParticleTextureAssetName>Textures\LensFlare</ParticleTextureAssetName>
+      <Modifiers>
+        <Item Type="ProjectMercury.Modifiers.ColourInterpolatorModifier">
+          <InitialColour>0.5019608 0 0.5019608</InitialColour>
+          <MiddleColour>0.5019608 0.5019608 1</MiddleColour>
+          <MiddlePosition>0.5</MiddlePosition>
+          <FinalColour>0 0.7529412 0.7529412</FinalColour>
+        </Item>
+        <Item Type="ProjectMercury.Modifiers.OpacityModifier">
+          <Initial>1</Initial>
+          <Ultimate>0</Ultimate>
+        </Item>
+      </Modifiers>
+      <BlendMode>Add</BlendMode>
+      <TriggerOffset>0 0</TriggerOffset>
+      <MinimumTriggerPeriod>0</MinimumTriggerPeriod>
+    </Item>
+    <Item>
+      <Name>Emitter01</Name>
+      <Budget>1000</Budget>
+      <Term>1</Term>
+      <ReleaseQuantity>5</ReleaseQuantity>
+      <Enabled>True</Enabled>
+      <ReleaseSpeed>
+        <Value>50</Value>
+        <Variation>25</Variation>
+      </ReleaseSpeed>
+      <ReleaseColour>
+        <Value>1 1 1</Value>
+        <Variation>0 0 0</Variation>
+      </ReleaseColour>
+      <ReleaseOpacity>
+        <Value>1</Value>
+        <Variation>0</Variation>
+      </ReleaseOpacity>
+      <ReleaseScale>
+        <Value>32</Value>
+        <Variation>0</Variation>
+      </ReleaseScale>
+      <ReleaseRotation>
+        <Value>0</Value>
+        <Variation>50</Variation>
+      </ReleaseRotation>
+      <ReleaseImpulse>0 0</ReleaseImpulse>
+      <ParticleTextureAssetName>Textures\Star</ParticleTextureAssetName>
+      <Modifiers>
+        <Item Type="ProjectMercury.Modifiers.ColourModifier">
+          <InitialColour>1 0 0</InitialColour>
+          <UltimateColour>0.5019608 1 1</UltimateColour>
+        </Item>
+        <Item Type="ProjectMercury.Modifiers.RotationModifier">
+          <RotationRate>3.57079625</RotationRate>
+        </Item>
+        <Item Type="ProjectMercury.Modifiers.OpacityInterpolatorModifier">
+          <InitialOpacity>0</InitialOpacity>
+          <MiddleOpacity>1</MiddleOpacity>
+          <MiddlePosition>0.5</MiddlePosition>
+          <FinalOpacity>0</FinalOpacity>
+        </Item>
+        <Item Type="ProjectMercury.Modifiers.ScaleModifier">
+          <InitialScale>32</InitialScale>
+          <UltimateScale>0</UltimateScale>
+        </Item>
+      </Modifiers>
+      <BlendMode>Add</BlendMode>
+      <TriggerOffset>0 0</TriggerOffset>
+      <MinimumTriggerPeriod>0</MinimumTriggerPeriod>
+    </Item>
+    <Name>Particle Effect</Name>
+    <Author />
+    <Description />
+  </Asset>
+</XnaContent>

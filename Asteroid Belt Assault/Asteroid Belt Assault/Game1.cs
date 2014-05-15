@@ -87,6 +87,9 @@ namespace Asteroid_Belt_Assault
             Song song = Content.Load<Song>(@"Sounds\song");  // Put the name of your song in instead of "song_title"
             MediaPlayer.Play(song);
 
+            EffectManager.Initialize(graphics, Content);
+            EffectManager.LoadContent();
+
             bloom = new BloomComponent(this);
             bloom.Initialize();
          
@@ -194,6 +197,7 @@ namespace Asteroid_Belt_Assault
 
             // TODO: Add your update logic here
             bloom.Update(gameTime);
+            EffectManager.Update(gameTime);
 
             switch (gameState)
             {
@@ -293,11 +297,7 @@ namespace Asteroid_Belt_Assault
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Draw(GameTime gameTime)
         {
-            
 
-           
-
-           
 
             if (gameState == GameStates.TitleScreen)
             {
@@ -315,11 +315,16 @@ namespace Asteroid_Belt_Assault
                 (gameState == GameStates.PlayerDead) ||
                 (gameState == GameStates.GameOver))
             {
-                spriteBatch.Begin();
 
+                EffectManager.Draw();
+
+                spriteBatch.Begin();
+                
                 bloom.BeginDraw();
+               
 
                 GraphicsDevice.Clear(Color.Black);
+                
 
                 for (int i = 0; i < starField.Count; i++)
                 {
@@ -340,7 +345,7 @@ namespace Asteroid_Belt_Assault
 
                 
                 enemyManager.Draw(spriteBatch);
-                
+
                 
                 
                 
@@ -366,11 +371,13 @@ namespace Asteroid_Belt_Assault
                 spriteBatch.Begin(SpriteSortMode.BackToFront, BlendState.Additive);
                 
                 MouseState ms = Mouse.GetState();
-                spriteBatch.Draw(crosshairs, new Rectangle((int)ms.X - 32, (int)ms.Y - 32, 64, 64), new Rectangle(5* 64, 6 * 64, 64, 64), Color.Cyan);//fav:(1,4)(5,6)
+                spriteBatch.Draw(crosshairs, new Rectangle((int)ms.X - 32, (int)ms.Y - 32, 64, 64), new Rectangle(5 * 64, 1 * 64, 64, 64), Color.Red);//fav:(1,4)(5,6)
 
                 
 
                 spriteBatch.End();
+
+                
             }
 
             if ((gameState == GameStates.GameOver))
@@ -391,9 +398,11 @@ namespace Asteroid_Belt_Assault
             }
 
 
-            
 
+            EffectManager.Draw();
             base.Draw(gameTime);
+
+            
         }
 
     }

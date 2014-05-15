@@ -15,6 +15,7 @@ namespace Asteroid_Belt_Assault
         private Vector2 offScreen = new Vector2(-500, -500);
         private Vector2 shotToAsteroidImpact = new Vector2(0, -20);
         private int enemyPointValue = 100;
+        private Random rand = new Random();
 
         public CollisionManager(
             AsteroidManager asteroidManager,
@@ -44,6 +45,12 @@ namespace Asteroid_Belt_Assault
                         explosionManager.AddExplosion(
                             enemy.EnemySprite.Center,
                             enemy.EnemySprite.Velocity / 10);
+                        
+                        if (rand.Next(0, 100) % 2 == 0)
+                            EffectManager.Effect("BasicExplosionWithHalo").Trigger(enemy.EnemySprite.Center);
+                        else
+                            EffectManager.Effect("BasicExplosionWithTrails2").Trigger(enemy.EnemySprite.Center);
+
                     }
 
                 }
@@ -64,7 +71,12 @@ namespace Asteroid_Belt_Assault
                         explosionManager.AddExplosion(
                             asteroid.Center,
                             asteroid.Velocity / 10);
+
+
+                        EffectManager.Effect("BasicExplosion").Trigger(asteroid.Center);
                         asteroid.Location = offScreen;
+
+                        
                         //asteroid.Velocity += shotToAsteroidImpact;
                     }
                 }
@@ -84,6 +96,7 @@ namespace Asteroid_Belt_Assault
                     explosionManager.AddExplosion(
                         playerManager.playerSprite.Center,
                         Vector2.Zero);
+
                 }
             }
         }

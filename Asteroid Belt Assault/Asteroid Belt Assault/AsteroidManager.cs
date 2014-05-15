@@ -150,9 +150,12 @@ namespace Asteroid_Belt_Assault
 
         private void BounceAsteroids(Sprite asteroid1, Sprite asteroid2)
         {
+            
             {
                 Vector2 cOfMass = (asteroid1.Velocity +
                     asteroid2.Velocity) / 2;
+
+                EffectManager.Effect("MeteroidCollision").Trigger((asteroid1.Center + asteroid2.Center) / 2);
 
                 Vector2 normal1 = asteroid2.Center - asteroid1.Center;
                 normal1.Normalize();
